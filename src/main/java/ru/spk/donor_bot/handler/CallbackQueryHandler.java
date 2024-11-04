@@ -48,6 +48,7 @@ public class CallbackQueryHandler {
         switch (update.callbackQuery().data()) {
             case INFO -> infoManager.answerCallbackQuery(update.callbackQuery());
             case ADDRESS_AND_PHONE -> infoManager.addressAndPhone(update.callbackQuery());
+            case REGISTRATION_FOR_PLASMA_DONATION -> infoManager.informationAboutRegistrationPlasmaDonors(update.callbackQuery());
             case START -> startManager.answerCallbackQuery(update.callbackQuery());
             case DONOR_INFORMATION -> infoManager.informationForDonors(update.callbackQuery());
             case BLOOD_DONORS -> infoForBloodDonors.answerCallbackQuery(update.callbackQuery());

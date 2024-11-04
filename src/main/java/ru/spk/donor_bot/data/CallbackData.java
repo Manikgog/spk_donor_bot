@@ -24,5 +24,6 @@ public class CallbackData {
     public static final String WHERE_DONATED_PLASMA_IS_USED = "where_donated_plasma_is_used";
     public static final String ANSWERS_TO_FREQUENT_QUESTIONS_PLASMA_DONORS = "answers_to_frequent_questions_plasma_donors";
     public static final String ANSWERS_TO_FREQUENT_QUESTIONS_BONE_MARROW_DONORS = "answers_to_frequent_questions_marrow_donors";
+    public static final String REGISTRATION_FOR_PLASMA_DONATION = "registration_for_plasma_donation";
 
 }

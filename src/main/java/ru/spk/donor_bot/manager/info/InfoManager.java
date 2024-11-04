@@ -22,6 +22,7 @@ public class InfoManager extends AbstractManager {
     private final KeyboardFactory keyboardFactory;
     private final String folderName = "dataFiles";
     private final String generalInformation = "general-information.txt";
+    private final String registrationForPlasmaDonors = "registration-of-plasma-donors.txt";
 
     public InfoManager(AnswerMethodFactory answerMethodFactory,
                        KeyboardFactory keyboardFactory,
@@ -44,10 +45,12 @@ public class InfoManager extends AbstractManager {
                 keyboardFactory.getInlineKeyboard(
                         List.of("Адрес и телефон станции переливания крови",
                                 "Информация для доноров",
+                                "Запись на сдачу плазмы",
                                 "Назад"),
-                        List.of(1, 1, 1),
+                        List.of(1, 1, 1, 1),
                         List.of(ADDRESS_AND_PHONE,
                                 DONOR_INFORMATION,
+                                REGISTRATION_FOR_PLASMA_DONATION,
                                 START)
                 ));
 
@@ -68,10 +71,12 @@ public class InfoManager extends AbstractManager {
                 keyboardFactory.getInlineKeyboard(
                         List.of("Адрес и телефон станции переливания крови",
                                 "Информация для доноров",
+                                "Запись на сдачу плазмы",
                                 "Назад"),
-                        List.of(1, 1, 1),
+                        List.of(1, 1, 1, 1),
                         List.of(ADDRESS_AND_PHONE,
                                 DONOR_INFORMATION,
+                                REGISTRATION_FOR_PLASMA_DONATION,
                                 START)
                 ));
         telegramBot.execute(sendMessage);
@@ -113,4 +118,22 @@ public class InfoManager extends AbstractManager {
         telegramBot.execute(sendMessage);
     }
 
+    /**
+    Метод для возвращения ссылки для записи на сдачу плазмы крови
+    @param callbackQuery - запрос обратного вызова
+     */
+    public void informationAboutRegistrationPlasmaDonors(CallbackQuery callbackQuery) {
+        logger.info("The informationAboutRegistrationPlasmaDonors method of the InfoManager class works. Parameter: CallbackQuery -> {}", callbackQuery);
+        Path filePath = Paths.get(folderName, registrationForPlasmaDonors);
+        String message = filePath.toFile().exists() ? FileManager.readFile(filePath) : "Файл не найден";
+        EditMessageText sendMessage = answerMethodFactory.getEditMessageText(
+                callbackQuery,
+                message,
+                keyboardFactory.getInlineKeyboard(
+                        List.of("Назад"),
+                        List.of(1),
+                        List.of(INFO)
+                ));
+        telegramBot.execute(sendMessage);
+    }
 }
