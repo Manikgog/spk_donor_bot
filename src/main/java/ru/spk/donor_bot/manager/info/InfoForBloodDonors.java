@@ -78,17 +78,15 @@ public class InfoForBloodDonors extends AbstractManager{
                                 "Где применяется донорская кровь",
                                 "Противопоказания к донорству",
                                 "Документы выдаваемые донору",
-                                "Права донора и Трудовой кодекс",
                                 "Льготы и привилегии",
                                 "Ответы на часто задаваемые вопросы",
                                 "Назад"),
-                        List.of(1, 1, 1, 1, 1, 1, 1, 1, 1),
+                        List.of(1, 1, 1, 1, 1, 1, 1, 1),
                         List.of(DONOR_NUTRITION_BLOOD,
                                 FREQUENCY_OF_BLOOD_DONATION,
                                 WHERE_DONATED_BLOOD_IS_USED,
                                 CONTRAINDICATIONS_TO_DONATION,
                                 DOCUMENTS_FOR_DONOR,
-                                TRADE_REGULATION,
                                 PRIVILEGES_AND_TRADE_CODEX,
                                 ANSWERS_TO_FREQUENT_QUESTIONS,
                                 DONOR_INFORMATION)
@@ -126,20 +124,6 @@ public class InfoForBloodDonors extends AbstractManager{
 
     public void privilegesAndTradeCodex(CallbackQuery callbackQuery) {
         Path filePath = Paths.get(folderName, privilegesAndTradeCodex);
-        String message = filePath.toFile().exists() ? FileManager.readFile(filePath) : "Файл не найден";
-        EditMessageText sendMessage = answerMethodFactory.getEditMessageText(
-                callbackQuery,
-                message,
-                keyboardFactory.getInlineKeyboard(
-                        List.of("Назад"),
-                        List.of(1),
-                        List.of(BLOOD_DONORS)
-                ));
-        telegramBot.execute(sendMessage);
-    }
-
-    public void tradeRegulation(CallbackQuery callbackQuery) {
-        Path filePath = Paths.get(folderName, tradeRegulation);
         String message = filePath.toFile().exists() ? FileManager.readFile(filePath) : "Файл не найден";
         EditMessageText sendMessage = answerMethodFactory.getEditMessageText(
                 callbackQuery,

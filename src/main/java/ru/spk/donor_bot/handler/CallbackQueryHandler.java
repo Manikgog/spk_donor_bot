@@ -60,7 +60,6 @@ public class CallbackQueryHandler {
             case WHERE_DONATED_BLOOD_IS_USED -> infoForBloodDonors.whereDonatedBloodIsUsed(update.callbackQuery());
             case CONTRAINDICATIONS_TO_DONATION -> infoForBloodDonors.contraindicationsForDonation(update.callbackQuery());
             case DOCUMENTS_FOR_DONOR -> infoForBloodDonors.documentsForDonor(update.callbackQuery());
-            case TRADE_REGULATION -> infoForBloodDonors.tradeRegulation(update.callbackQuery());
             case PRIVILEGES_AND_TRADE_CODEX -> infoForBloodDonors.privilegesAndTradeCodex(update.callbackQuery());
             case ANSWERS_TO_FREQUENT_QUESTIONS -> infoForBloodDonors.answersToFrequentQuestions(update.callbackQuery());
 
